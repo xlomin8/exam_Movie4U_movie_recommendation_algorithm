@@ -4,7 +4,7 @@ import glob
 
 
 df = pd.DataFrame() # 빈 dataframe
-data_paths = glob.glob('./crawling_data/MovieReview_2020/*')
+data_paths = glob.glob('./clean_review_one/*')
 print(data_paths)
 
 for path in data_paths:
@@ -18,5 +18,6 @@ for path in data_paths:
 # concat한 파일 속에 중복값이 있다면 제거
 df.drop_duplicates(inplace=True)
 df.info()
-my_year = 2020
-df.to_csv('./crawling_data/reviews_{}_5.csv'.format(my_year), index=False)
+
+# my_year = 2020
+df.to_csv('./reviews_2017_2022.csv', index=False)
