@@ -16,7 +16,7 @@ for title in df['title'].unique():
     if len(temp) > 30:
         temp = temp.iloc[:30, :]    # 30행까지
     # 최대 30개 리뷰를 하나로 결합
-    one_sentence = ' '.join(temp['cleaned_sentences'])
+    one_sentence = ' '.join(temp['clean_sentences'])
     one_sentences.append(one_sentence)
 df_one = pd.DataFrame({'titles':df['title'].unique(), 'reviews':one_sentences})
 
