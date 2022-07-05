@@ -3,7 +3,7 @@ from gensim.models import Word2Vec
 
 
 # 데이터 로드
-review_word = pd.read_csv('./crawling_data/clean_review_one.csv')
+review_word = pd.read_csv('./reviews_2017_2022.csv')
 review_word.info()
 
 # 리뷰 리스트 만들기
@@ -27,26 +27,8 @@ embedding_model = Word2Vec(clean_tokens,
                            sg=1)    # 어떤 알고리즘 사용하는지 (skip gram algorithm)
 
 # 모델 저장
-embedding_model.save('./models/word2vec_2017_2022_movies.model')
+embedding_model.save('./models/word2vec_movies_2017_2022.model')
 
 # {형태소 : 차원 좌표}
 print(list(embedding_model.wv.index_to_key))    # 형태소 출력
-print(len(embedding_model.wv.index_to_key)) # 형태소 개수(=차원 축소 전 원래 차원의 개수) 출력
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(len(embedding_model.wv.index_to_key)) # 형태소 개수(=차원 축소 전 원래 차원의 개수(22539)) 출력
