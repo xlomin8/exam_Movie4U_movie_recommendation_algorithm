@@ -26,7 +26,7 @@ movie_idx = df_reviews[df_reviews['titles']=='겨울왕국 2 (Frozen 2)'].index[
 cosine_sim = linear_kernel(Tfidf_matrix[movie_idx], Tfidf_matrix)
 
 
-코사인 유사도값(1에 가까울수록)으로 추천해주는 함수 생성
+# 코사인 유사도값(1에 가까울수록)으로 추천해주는 함수 생성
 def getRecommendation(cosine_sim):
     simScore = list(enumerate(cosine_sim[-1]))
     ## 코사인 유사도값 기준으로 내림차순 정렬
