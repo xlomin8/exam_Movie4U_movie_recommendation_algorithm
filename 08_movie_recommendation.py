@@ -4,6 +4,7 @@ from scipy.io import mmread
 import pickle
 
 
+
 # 1. 영화 제목 / index 이용한 영화 추천 알고리즘
 # 데이터 로드
 df_reviews = pd.read_csv('./reviews_2017_2022.csv')
@@ -104,8 +105,46 @@ print(recommendation[:10])
 
 
 # 3. 문장 이용한 추천 알고리즘
+import pandas as pd
+from sklearn.metrics.pairwise import linear_kernel
+from scipy.io import mmread
+import pickle
+from konlpy.tag import Okt
+import re
+
+
 # 문장 이용
-sentence = '견딜 수 없이 촌스런 삼남매의 견딜 수 없이 사랑스러운 행복소생기'
+sentence = '화려한 액션과 소름돋는 반전이 있는 영화'
+
+
+## tokenizer 로드
+okt = Okt()
+
+## 영화와 직접적으로 관련된 stopword 추가
+df_stopwords = pd.read_csv('./crawling_data/stopwords.csv')
+stopwords = list(df_stopwords['stopword'])
+stopwords = stopwords + ['영화', '연출', '관객', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용']
+
+
+## 한글 제외 모두 제거
+review = re.sub('[^가-힣 ]', ' ', sentence)  # review 문장 속 한글, 띄어쓰기 제외 모두 띄어쓰기로 대체
+
+
+## 형태소 분리
+token = okt.pos(review, stem=True)  # pos -> (형태소, 품사)형태로 분리
+df_token = pd.DataFrame(token, columns=['word', 'class'])
+df_token = df_token[(df_token['class'] == 'Noun') |
+                        (df_token['class'] == 'Verb') |
+                        (df_token['class'] == 'Adjective')] # 명사, 동사, 형용사/부사만 남아 있는 dataframe 만들기
+## 불용어 제거
+words = []
+for word in df_token.word:
+    ## 한 글자 제거
+    if len(word) > 1:
+        words.append(word)
+    # 형태소 리스트 + 품사 리스트
+clean_sentence = ' '.join(words)
+print(clean_sentence)
 
 
 # 모델 적용
