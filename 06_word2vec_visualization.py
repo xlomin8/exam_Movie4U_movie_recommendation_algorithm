@@ -22,7 +22,7 @@ embedding_model = Word2Vec.load('./models/word2vec_movies_2017_2022.model')
 
 # 지정한 키워드와 가장 유사한 값 10개
 key_word = '마블'
-sim_word = embedding_model.wv.most_similar(key_word, topn=10)   # [(형태소, 유사도)]
+sim_word = embedding_model.wv.most_similar(key_word, topn=10)   # [(형태소, 유사도)] # most_silimar : 벡터 공간에서 비슷한 위치에 있는 애들 모아서 보여줌
 print(sim_word)
 
 
