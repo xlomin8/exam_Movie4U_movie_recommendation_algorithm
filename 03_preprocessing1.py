@@ -13,6 +13,8 @@ okt = Okt()
 ## stopword 로드
 df_stopwords = pd.read_csv('./crawling_data/stopwords.csv')
 stopwords = list(df_stopwords['stopword'])
+# 영화와 직접적으로 관련된 stopword 추가
+stopwords = stopwords + ['영화', '연출', '관객', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용']
 
 ## 한글 제외 모두 제거
 count = 0
