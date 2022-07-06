@@ -24,6 +24,7 @@ for review in df.reviews:
     if count % 100 == 0:
         print()
     review = re.sub('[^가-힣 ]', ' ', review)  # review 문장 속 한글, 띄어쓰기 제외 모두 띄어쓰기로 대체
+    ## 특정 단어로 도배된(20개 이상) 리뷰 제거(2019)
     # review = review.split()
     # words = []
     # for word in review:
@@ -41,7 +42,7 @@ for review in df.reviews:
     ## 불용어 제거
     words = []
     for word in df_token.word:
-        ## 한 글자, 20글자 이상 제거
+        ## 한 글자 제거
         if len(word) > 1:
             if word not in stopwords:
                 words.append(word)
