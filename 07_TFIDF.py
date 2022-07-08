@@ -7,7 +7,7 @@ import pickle
 
 
 # 데이터 로드
-df_reviews = pd.read_csv('./reviews_2017_2022.csv')
+df_reviews = pd.read_csv('./token_reviews_2017_2022.csv')
 df_reviews.info()
 
 Tfidf = TfidfVectorizer(sublinear_tf=True)
@@ -20,9 +20,9 @@ print(Tfidf_matrix[0])
 
 
 # 모델 저장
-with open('./models/tfidf.pickle', 'wb') as f:
+with open('./models/tfidf(2).pickle', 'wb') as f:
     pickle.dump(Tfidf, f)
 
 
 # 매트릭스 저장
-mmwrite('./models/Tfidf_movie_review.mtx', Tfidf_matrix)
+mmwrite('./models/Tfidf_movie_review.mtx(2)', Tfidf_matrix)
