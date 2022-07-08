@@ -7,12 +7,13 @@ import pickle
 
 # 1. 영화 제목 / index 이용한 영화 추천 알고리즘
 # 데이터 로드
-df_reviews = pd.read_csv('./reviews_2017_2022.csv')
-Tfidf_matrix = mmread('./models/Tfidf_movie_review.mtx').tocsr()
+df_reviews = pd.read_csv('./token_reviews_2017_2022.csv')
+
+Tfidf_matrix = mmread('./models/Tfidf_movie_review.mtx(2)').tocsr()
 
 
 # TFIDF모델 로드
-with open('./models/tfidf.pickle', 'rb') as f:
+with open('./models/tfidf(2).pickle', 'rb') as f:
     Tfidf = pickle.load(f)
 
 
@@ -123,7 +124,7 @@ okt = Okt()
 ## 영화와 직접적으로 관련된 stopword 추가
 df_stopwords = pd.read_csv('./crawling_data/stopwords.csv')
 stopwords = list(df_stopwords['stopword'])
-stopwords = stopwords + ['영화', '연출', '관객', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용']
+stopwords = stopwords + ['영화', '연출', '관객', '관람', '출연', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용', '연기', '되어다']
 
 
 ## 한글 제외 모두 제거
