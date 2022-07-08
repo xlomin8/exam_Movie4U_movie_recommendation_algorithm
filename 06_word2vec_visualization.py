@@ -17,7 +17,7 @@ rc('font', family=font_name)
 
 
 # 모델 로드
-embedding_model = Word2Vec.load('./models/word2vec_movies_2017_2022.model')
+embedding_model = Word2Vec.load('./models/word2vec_movies_2017_2022(2).model')
 
 
 # 지정한 키워드와 가장 유사한 값 10개
