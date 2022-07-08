@@ -3,7 +3,7 @@ from konlpy.tag import Okt
 import re
 
 # 데이터 로드
-df = pd.read_csv('./crawling_data/reviews_2019.csv')
+df = pd.read_csv('./crawling_data/reviews_2022.csv')
 df.info()
 
 # 데이터 전처리
@@ -14,7 +14,7 @@ okt = Okt()
 df_stopwords = pd.read_csv('./crawling_data/stopwords.csv')
 stopwords = list(df_stopwords['stopword'])
 # 영화와 직접적으로 관련된 stopword 추가
-stopwords = stopwords + ['영화', '연출', '관객', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용']
+stopwords = stopwords + ['영화', '연출', '관객', '관람', '출연', '개봉', '개봉일', '주인공', '출연', '배우', '리뷰', '촬영', '각본', '극장', '감독', '네이버', '박스오피스', '박스', '오피스', '장면', '내용', '연기', '되어다']
 
 ## 한글 제외 모두 제거
 count = 0
@@ -26,7 +26,7 @@ for review in df.reviews:
     if count % 100 == 0:
         print()
     review = re.sub('[^가-힣 ]', ' ', review)  # review 문장 속 한글, 띄어쓰기 제외 모두 띄어쓰기로 대체
-    ## 특정 단어로 도배된(20개 이상) 리뷰 제거(2019)
+    # # 특정 단어로 도배된(20개 이상) 리뷰 제거(2019)
     # review = review.split()
     # words = []
     # for word in review:
@@ -60,6 +60,6 @@ df = df[['title', 'clean_sentences']]
 df.dropna(inplace=True)
 
 # 저장
-df.to_csv('./crawling_data/clean_review_2019.csv', index=False)
+df.to_csv('./clean_review/clean_review_2022.csv', index=False)
 
 
