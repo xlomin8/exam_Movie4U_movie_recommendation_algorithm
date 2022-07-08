@@ -3,7 +3,7 @@ from gensim.models import Word2Vec
 
 
 # 데이터 로드
-review_word = pd.read_csv('./reviews_2017_2022.csv')
+review_word = pd.read_csv('./token_reviews_2017_2022.csv')
 review_word.info()
 
 # 리뷰 리스트 만들기
@@ -27,7 +27,7 @@ embedding_model = Word2Vec(clean_tokens,
                            sg=1)    # 어떤 알고리즘 사용하는지 (skip gram algorithm)
 
 # 모델 저장
-embedding_model.save('./models/word2vec_movies_2017_2022.model')
+embedding_model.save('./models/word2vec_movies_2017_2022(2).model')
 
 # {형태소 : 차원 좌표}
 print(list(embedding_model.wv.index_to_key))    # 형태소 출력
