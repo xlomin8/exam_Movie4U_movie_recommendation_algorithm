@@ -14,11 +14,11 @@ plt.rc('font', family='NanumBarunGothic')
 
 
 # 데이터 로드
-df = pd.read_csv('./reviews_2017_2022.csv')
+df = pd.read_csv('./token_reviews_2017_2022.csv')
 
 
 # 영화 제목으로 변수 지정
-words = df[df['titles']=='배틀 트랩 (CAMP HOLLAND)']['reviews']
+words = df[df['titles']=='1987 (1987:When the Day Comes)']['reviews']
 # # 인덱스로 변수 지정
 # words = df.iloc[2471][-1]
 
