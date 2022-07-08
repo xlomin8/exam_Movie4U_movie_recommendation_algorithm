@@ -4,7 +4,7 @@ import glob
 
 
 df = pd.DataFrame() # 빈 dataframe
-data_paths = glob.glob('./clean_review_one/*')
+data_paths = glob.glob('clean_review_one_sentence/*')
 print(data_paths)
 
 for path in data_paths:
@@ -20,4 +20,4 @@ df.drop_duplicates(inplace=True)
 df.info()
 
 # my_year = 2020
-df.to_csv('./reviews_2017_2022.csv', index=False)
+df.to_csv('./token_reviews_2017_2022.csv', index=False)
