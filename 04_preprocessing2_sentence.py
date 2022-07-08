@@ -22,4 +22,4 @@ df_one = pd.DataFrame({'titles':df['title'].unique(), 'reviews':one_sentences})
 
 # 저장
 year = 2022
-df_one.to_csv('./clean_review_one/clean_review_one_{}.csv'.format(year), index=False)
+df_one.to_csv('./clean_review_one_sentence/clean_review_one_{}.csv'.format(year), index=False)
